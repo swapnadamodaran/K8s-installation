@@ -169,6 +169,7 @@ sudo systemctl enable kubelet
 sudo kubeadm config images pull
 
 #Initialize the cluster
+#use the below ip for both master and worker nodes always
 
 #sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 
