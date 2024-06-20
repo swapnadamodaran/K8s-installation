@@ -242,22 +242,7 @@ kube-system   kube-flannel-ds-jxbvx                 1/1     Running   0         
 kube-system   kube-proxy-mhfqh                      1/1     Running   0          10m
 kube-system   kube-scheduler-master-node            1/1     Running   0          11m
 
-#We are now ready to move to the worker node. Execute the kubeadm join from step 2 on the worker node. You should see an output similar to the following:
-
-#This node has joined the cluster:
-#* Certificate signing request was sent to apiserver and a response was received.
-#* The Kubelet was informed of the new secure connection details.
-#Run kubectl get nodes on the control-plane to see this node join the cluster.
-
-#If you go back to the master node, you should now be able to see the worker node in the output of the get nodes command.
-
-kubectl get nodes
-
-#And the output should look as follows:
-
-NAME          STATUS   ROLES                  AGE     VERSION
-master-node   Ready    control-plane,master   18m40s   v1.24.2
-worker-node   Ready    <none>                 3m2s     v1.24.2
+#We are now ready to move to the worker node installation. 
 
 #Finally, to set the proper role for the worker node, run this command on the master node:
 
@@ -280,7 +265,10 @@ sudo kubeadm token create --print-join-command # To generate New Token along wit
 ###Only in Worker Nodes:
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-kubeadm join 172.31.39.239:6443 --token 0lpw72.zjg84z07qcqgq6y8 \
+Paste the token generated from the master node in the worker node
+
+#the token looks as shown below
+#kubeadm join 172.31.39.239:6443 --token 0lpw72.zjg84z07qcqgq6y8 \
         --discovery-token-ca-cert-hash sha256:93c44b3e4433a3ea6259dffc1e782ea948d33badbb49b9c95eb8dc08c6c6f9da
 
 
